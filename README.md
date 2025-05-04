@@ -1,4 +1,4 @@
-# 📝 Blogging Application - ASP.NET Core 9 MVC
+# 📝 Smriti - Blogging Application (ASP.NET Core 9 MVC)
 
 Welcome to this **Complete ASP.NET Core 9 MVC Course Project**, where we build a fully functional Blogging Application using:
 
@@ -6,7 +6,7 @@ Welcome to this **Complete ASP.NET Core 9 MVC Course Project**, where we build a
 - Entity Framework Core (EF Core)  
 - Identity for authentication
 
-This project is ideal for beginners and intermediate developers looking to enhance their full-stack web development skills.
+ Smriti is ideal for beginners and intermediate developers looking to enhance their full-stack web development skills.
 
 ---
 

@@ -8,7 +8,7 @@ namespace MoxikaBlogApp.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage ="User Name is required")]
-        [MaxLength(100, ErrorMessage ="User name shoul not be more than 100 Characters")]
+        [MaxLength(100, ErrorMessage ="User name should not be more than 100 Characters")]
         public string UserName { get; set; }
 
         [DataType(DataType.Date)]

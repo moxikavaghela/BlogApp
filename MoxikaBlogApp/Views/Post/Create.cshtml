@@ -64,6 +64,7 @@
             <span asp-validation-for="Post.Content"></span>
         </div>
 
+
         <div class="form-group">
             <label asp-for="FeatureImage"></label>
             <input asp-for="FeatureImage" type="file" class="form-control" />
@@ -73,3 +74,23 @@
         <a class="btn btn-secondary mt-1">Back To List</a>
     </form>
 </div>
+
+@section scripts {
+    <script src="https://cdn.tiny.cloud/1/kqqwa6ifzztxratd1k9k3bqtap9t22gp1jpzyrbpclgo811o/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+          selector: 'textarea',
+        //   plugins: [
+        //     'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists',
+        //     'media', 'searchreplace', 'table', 'visualblocks', 'wordcount', 'checklist', 'mediaembed',
+        //     'casechange', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker',
+        //     'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai',
+        //     'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect',
+        //     'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf'
+        //   ],
+        //   toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat'
+       });
+    </script>
+
+}

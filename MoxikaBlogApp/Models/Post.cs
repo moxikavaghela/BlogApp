@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MoxikaBlogApp.Models
@@ -19,6 +20,8 @@ namespace MoxikaBlogApp.Models
         [Required(ErrorMessage = "Author is Required")]
         [MaxLength(100, ErrorMessage = "Author cannot be more than 100 characters")]
         public string Author { get; set; }
+
+        [ValidateNever]
         public string FeatureImagePath { get; set; }
 
         [DataType(DataType.Date)]
@@ -26,6 +29,7 @@ namespace MoxikaBlogApp.Models
 
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
+        [ValidateNever]
         public Category Category { get; set; }
 
         public ICollection<Comments> Comments { get; set; }

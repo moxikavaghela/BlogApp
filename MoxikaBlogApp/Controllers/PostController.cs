@@ -35,6 +35,45 @@ namespace MoxikaBlogApp.Controllers
         }
 
         [HttpGet]
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var post = await _context.Posts
+                .Include(p => p.Category)
+                .Include(p => p.Comments)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
+        }
+
+        //public async Task<IActionResult> Detail(int id)
+        //{            
+        //    if id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var post = _context.Posts.Include(p => p.Category).Include(p=>p.Comments).FirstOrDefault(p => p.Id == id);
+
+        //    if (post == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(post);
+        //}
+
+        [HttpGet]
         public IActionResult Create()
         {
             var postViewModel = new PostViewModel();

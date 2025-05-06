@@ -31,7 +31,7 @@ namespace MoxikaBlogApp.Models
         public int CategoryId { get; set; }
         [ValidateNever]
         public Category Category { get; set; }
-
-        //public ICollection<Comments> Comments { get; set; }
+        [ValidateNever]
+        public ICollection<Comments> Comments { get; set; }
     }
 }

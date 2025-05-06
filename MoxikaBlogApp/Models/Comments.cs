@@ -15,7 +15,7 @@ namespace MoxikaBlogApp.Models
         public DateTime CommentDate { get; set; } = DateTime.Now;
 
         [Required(ErrorMessage ="Content is Required")]
-        public int Content { get; set; }
+        public string Content { get; set; }
 
         [ForeignKey("Post")]
         public int PostId { get; set; }

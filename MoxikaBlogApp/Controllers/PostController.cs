@@ -67,6 +67,15 @@ namespace MoxikaBlogApp.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+
+            postViewModel.Categories = _context.Categories.Select(c =>
+            new SelectListItem
+            {
+                Value = c.Id.ToString(),
+                Text = c.Name
+            }
+            ).ToList();
+
             return View(postViewModel);
 
         }

@@ -120,7 +120,34 @@ namespace MoxikaBlogApp.Controllers
 
         }
 
-        public JsonResult AddComment([FromBody]Comments comment)
+        [HttpGet]
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var postFromDb = await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
+            if (postFromDb == null)
+            {
+                return NotFound();
+            }
+            EditViewModel editViewModel = new EditViewModel
+            {
+                Post = postFromDb,
+                Categories = _context.Categories.Select(c =>
+                 new SelectListItem
+                 {
+                     Value = c.Id.ToString(),
+                     Text = c.Name
+                 }).ToList()
+            };
+            return View(editViewModel);
+        }
+
+        public JsonResult AddComment([FromBody] Comments comment)
         {
             comment.CommentDate = DateTime.Now;
             _context.Comments.Add(comment);

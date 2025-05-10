@@ -4,7 +4,7 @@ Welcome to this **Complete ASP.NET Core 9 MVC Course Project**, where we build a
 
 - ASP.NET Core 9 MVC  
 - Entity Framework Core (EF Core)  
-- Identity for authentication
+- Identity for authentication(upcoming)
 
  Smriti is ideal for beginners and intermediate developers looking to enhance their full-stack web development skills.
 
@@ -18,14 +18,14 @@ Welcome to this **Complete ASP.NET Core 9 MVC Course Project**, where we build a
 
 ## 📌 What You Will Learn
 
-✅ Setting up an ASP.NET Core MVC project  
-✅ Using Entity Framework Core (EF Core) for database interactions  
-✅ Creating a full Blog CRUD Application  
-✅ Designing Models, Controllers, and Views  
-✅ Integrating Identity for user registration & login  
-✅ Styling with Bootstrap and Razor Pages  
-✅ Configuring SQL Server & applying migrations  
-✅ Implementing Dependency Injection & Repository Pattern  
+✅ Setting up an ASP.NET Core MVC project
+✅ Using Entity Framework Core (EF Core) for database interactions
+✅ Creating a full Blog CRUD Application
+✅ Designing Models, Controllers, and Views
+✅ Styling with Bootstrap and Razor Pages
+✅ Configuring SQL Server & applying migrations
+✅ Implementing Dependency Injection & Repository Pattern
+✅ Authentication and role-based access — Upcoming in future scope
 
 ---
 
@@ -74,7 +74,7 @@ Welcome to this **Complete ASP.NET Core 9 MVC Course Project**, where we build a
 
 ---
 
-## 🔒 Authentication System
+## 🔒 Authentication System-upcoming
 
 - Built using **ASP.NET Core Identity**  
 - Includes features like:
@@ -89,7 +89,7 @@ Welcome to this **Complete ASP.NET Core 9 MVC Course Project**, where we build a
 - Blog Creation, Editing, Deletion  
 - Commenting System  
 - Category-based filtering  
-- Identity-based authentication  
+- Identity-based authentication -upcoming
 - Responsive UI with Bootstrap  
 - Clean architecture using Repository Pattern  
 

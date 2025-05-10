@@ -147,6 +147,82 @@ namespace MoxikaBlogApp.Controllers
             return View(editViewModel);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditViewModel editViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(editViewModel);
+            }
+
+            var postFromDb = await _context.Posts.AsNoTracking().FirstOrDefaultAsync(p => p.Id == editViewModel.Post.Id);
+            if (postFromDb == null)
+            {
+                return NotFound();
+            }
+
+            if (editViewModel.FeatureImage != null)
+            {
+                var inputFileExtension = Path.GetExtension(editViewModel.FeatureImage.FileName).ToLower();
+                bool isAllowed = _allowedExtension.Contains(inputFileExtension);
+                if (!isAllowed)
+                {
+                    ModelState.AddModelError("", "Only .jpg, .jpeg, .png files are allowed");
+                    return View(editViewModel);
+                }
+                var existingFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", Path.GetFileName(postFromDb.FeatureImagePath));
+                if (System.IO.File.Exists(existingFilePath))
+                {
+                    System.IO.File.Delete(existingFilePath);
+                }
+                editViewModel.Post.FeatureImagePath = await UploadFiletoFolder(editViewModel.FeatureImage);
+            }
+            else 
+            {
+                editViewModel.Post.FeatureImagePath = postFromDb.FeatureImagePath;
+            }
+            _context.Posts.Update(editViewModel.Post);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var postFromDb = await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
+            if (postFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(postFromDb);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var postFromDb = await _context.Posts.FirstOrDefaultAsync(p => p.Id == id);
+            if (postFromDb == null)
+            {
+                return NotFound();
+            }
+
+            // Delete the file if it exists
+            if (!string.IsNullOrEmpty(postFromDb.FeatureImagePath))
+            {
+                var existingFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "images",
+                    Path.GetFileName(postFromDb.FeatureImagePath));
+                if (System.IO.File.Exists(existingFilePath))
+                {
+                    System.IO.File.Delete(existingFilePath);
+                }
+            }
+
+            _context.Posts.Remove(postFromDb);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
         public JsonResult AddComment([FromBody] Comments comment)
         {
             comment.CommentDate = DateTime.Now;

@@ -1,5 +1,6 @@
 # trigger:
-- master
+trigger:
+- main
 # If your branch is 'main', use:
 # - main
 
